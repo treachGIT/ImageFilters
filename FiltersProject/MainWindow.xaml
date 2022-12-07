@@ -1,0 +1,97 @@
+﻿<Window x:Class="FiltersProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FiltersProject"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Row="0" Grid.ColumnSpan="3">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Options">
+                    <MenuItem Header="Load Piucture" Click="LoadFile"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+
+        <Image Margin="10" Grid.Row="1" Grid.Column="0" Name="BaseImage"/>
+        <Frame  Grid.Row="1"  Grid.Column="1" Background="Black"/>
+        <Image Margin="10" Grid.Row="1"  Grid.Column="2" Name="FilteredImage"/>
+
+        <StackPanel Margin="10" Grid.Row="2"  Grid.ColumnSpan="3" Orientation="Horizontal">
+            <ComboBox Width="200" Margin="0,0,50,0" SelectedValue="0" VerticalContentAlignment="Center">
+                <ComboBoxItem Selected="InvertSelected">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Invert Filter</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Selected="JitterSelected">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Jitter Filter</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Selected="KirschEdgeDetectorSelected">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>KirschEdgeDetector Filter</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Selected="MirrorSelected">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Mirror Filter</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Selected="WaterWaveSelected">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>WaterWave Filter</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Selected="SepiaSelected">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Sepia Filter</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Selected="RotateSelected" Unselected="RotateUnselected">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Rotate Filter</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Selected="OilPaintingSelected">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Oil Painting Filter</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Selected="PixellateSelected">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Pixellate Filter</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Selected="SimplePosterizationSelected">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Simple Posterization Filter</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+            </ComboBox>
+
+            <DockPanel HorizontalAlignment="Right">
+                <DockPanel Name="RotationField" HorizontalAlignment="Right" Visibility="Collapsed">
+                    <Label Content="Rotation:" VerticalContentAlignment="Center"></Label>
+                    <TextBox TextChanged="RotationChanged" Name="RotationValue" Width="50" Margin="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">45</TextBox>
+                </DockPanel>
+                <Button DockPanel.Dock="Right" Padding="10" Content="APPLY FILTER" Click="ExecuteFilter" />
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>
